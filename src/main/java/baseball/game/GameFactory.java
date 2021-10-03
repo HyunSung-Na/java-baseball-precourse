@@ -11,6 +11,10 @@ public class GameFactory {
         return new RandomNumberComputer();
     }
 
+    public static GameResultView gameResultView() {
+        return new GameResultView();
+    }
+
     public static Computer fixedNumberComputer(List<Character> numbers) {
         return new fixedNumberComputer(numbers);
     }

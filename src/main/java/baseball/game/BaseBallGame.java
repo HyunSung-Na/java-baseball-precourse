@@ -6,6 +6,7 @@ public class BaseBallGame {
 
     private final int GAME_END_CONDITION_NUMBER = 3;
 
+    private final GameResultView gameResultView = GameFactory.gameResultView();
     private final Computer computer;
 
     private int strike = 0;
@@ -30,8 +31,10 @@ public class BaseBallGame {
     private Boolean judgmentGame(int userInput) {
         countStrikeAndBall(userInput);
         if (strike == GAME_END_CONDITION_NUMBER) {
+            gameResultView.gameSuccessMessage(strike);
             return true;}
 
+        gameResultView.viewGameMessage(strike, ball);
         initStrikeAndBallCount();
 
         return false;
