@@ -1,10 +1,9 @@
 package baseball.game;
 
+import static baseball.game.GameMessage.GAME_SUCCESS_MESSAGE;
+import static baseball.game.GameMessage.NOT_MATCH_STRIKE_BALL_MESSAGE;
+
 public class GameResultView {
-
-    private final String GAME_SUCCESS_MESSAGE = "3개의 숫자를 모두 맞히셨습니다! 게임 종료";
-    private final String NOT_MATCH_STRIKE_BALL_MESSAGE = "낫싱";
-
     private final int gameMessageStartIndex = 0;
 
     private final StringBuilder gameMessage = new StringBuilder();
