@@ -9,8 +9,8 @@ public class GameResultView {
     private final StringBuilder gameMessage = new StringBuilder();
 
     void viewGameMessage(int strike, int ball) {
-        checkBallMessage(ball);
         checkStrikeMessage(strike);
+        checkBallMessage(ball);
         checkNotingMessage(strike, ball);
 
         System.out.println(gameMessage);
@@ -42,10 +42,10 @@ public class GameResultView {
     }
 
     private String strikeMessage(int strike) {
-        return String.format("%s스트라이크", strike);
+        return String.format("%s스트라이크 ", strike);
     }
 
     private String ballMessage(int ball) {
-        return String.format("%s볼 ", ball);
+        return String.format("%s볼", ball);
     }
 }
