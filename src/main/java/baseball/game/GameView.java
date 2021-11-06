@@ -1,10 +1,10 @@
 package baseball.game;
 
-import static baseball.game.GameMessage.GAME_SUCCESS_MESSAGE;
-import static baseball.game.GameMessage.NOT_MATCH_STRIKE_BALL_MESSAGE;
+import static baseball.game.BaseBallGame.GAME_END_CONDITION_NUMBER;
+import static baseball.game.GameMessage.*;
 
-public class GameResultView {
-    private final int gameMessageStartIndex = 0;
+public class GameView {
+    private final static int gameMessageStartIndex = 0;
 
     private final StringBuilder gameMessage = new StringBuilder();
 
@@ -36,8 +36,8 @@ public class GameResultView {
 
     }
 
-    public void gameSuccessMessage(int strike) {
-        System.out.println(strikeMessage(strike));
+    public void gameSuccessMessage() {
+        System.out.println(strikeMessage(GAME_END_CONDITION_NUMBER));
         System.out.println(GAME_SUCCESS_MESSAGE);
     }
 
@@ -47,5 +47,17 @@ public class GameResultView {
 
     private String ballMessage(int ball) {
         return String.format("%s볼", ball);
+    }
+
+    public void viewStartMessage() {
+        System.out.print(GAME_START_MESSAGE);
+    }
+
+    public void viewGameEndMessage() {
+        System.out.println(GAME_END_MESSAGE);
+    }
+
+    public void viewGameSystemMessage() {
+        System.out.println(GAME_SYSTEM_MESSAGE);
     }
 }

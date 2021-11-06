@@ -1,34 +1,36 @@
 package baseball.game;
 
-import static baseball.game.GameMessage.*;
 import static baseball.game.UserInputManager.GAME_END_NUMBER;
 
 public class BaseBallGameController {
 
     private final UserInputManager userInputManager;
-    private BaseBallGame baseBallGame;
+    private final GameView gameView = GameFactory.gameResultView();
 
     public BaseBallGameController(UserInputManager userInputManager) {
         this.userInputManager = userInputManager;
     }
 
     public void playGame() {
-        baseBallGame = GameFactory.baseballGame(GameFactory.randomNumberComputer());
-        System.out.print(GAME_START_MESSAGE);
+        BaseBallGame baseBallGame = GameFactory.baseballGame(GameFactory.randomNumberComputer());
+        gameView.viewStartMessage();
         while (!baseBallGame.changeUp(userInputManager.playerInputData())) {
-            System.out.print(GAME_START_MESSAGE);
+            gameView.viewGameMessage(baseBallGame.getStrike(), baseBallGame.getBall());
+            baseBallGame.initStrikeAndBallCount();
+            gameView.viewStartMessage();
         }
+        gameView.gameSuccessMessage();
         if (gameEndingCheckUserSelect()) { return; }
 
         playGame();
     }
 
     private boolean gameEndingCheckUserSelect() {
-        System.out.println(GAME_SYSTEM_MESSAGE);
+        gameView.viewGameSystemMessage();
         int userSelectedInput = userInputManager.isReStartGameSelectUserInput();
 
         if (userSelectedInput == GAME_END_NUMBER) {
-            System.out.println(GAME_END_MESSAGE);
+            gameView.viewGameEndMessage();
             return true;
         }
 

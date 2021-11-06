@@ -20,8 +20,8 @@ public class GameFactory {
         return new RandomNumberComputer();
     }
 
-    public static GameResultView gameResultView() {
-        return new GameResultView();
+    public static GameView gameResultView() {
+        return new GameView();
     }
 
     public static Computer fixedNumberComputer(List<Character> numbers) {
